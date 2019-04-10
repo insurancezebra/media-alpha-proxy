@@ -1,7 +1,9 @@
 import json
 import requests
+import logging
 
 MEDIA_ALPHA_URL = 'http://insurance-test.mediaalpha.com/ivr.json'
+log = logging.getLogger(__name__)
 
 
 def validate_input(payload):
@@ -13,26 +15,24 @@ def validate_input(payload):
     try:
         body = payload['body']
     except KeyError:
+        log.warning(' Key \'body\' not found. Continuing...')
         body = payload
     else:
         body = json.loads(body)
-
-    if 'version' not in body:
-        raise Exception('Invalid json object')
 
     return body
 
 
 def get_phone_number(event, context):
     """
-
-    :param event:
+    Get the users phone number
+    :param event: Contains payload
     :param context:
-    :return:
+    :return: Object containing phone number
     """
-    valid_body = validate_input(event)
+    body = validate_input(event)
 
-    r = requests.post(MEDIA_ALPHA_URL, json=valid_body)
+    r = requests.post(MEDIA_ALPHA_URL, json=body)
     response = {
         "statusCode": r.status_code,
         "body": r.json(),
