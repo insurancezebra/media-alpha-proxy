@@ -1,13 +1,13 @@
-
-service: media_alpha
+service: media-alpha
 
 provider:
   name: aws
   runtime: python3.6
-  profile: MyZebraUser
+  profile: MyZebraUser-staging
+  region: us-west-1
 
 functions:
-  get_phone_number:
+  phone_number:
     handler: handler.get_phone_number
     events:
       - http:
@@ -16,3 +16,8 @@ functions:
 
 plugins:
   - serverless-offline-python
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
