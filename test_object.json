@@ -1,0 +1,56 @@
+{
+   "headers":{
+      "Content-Type":"application/json",
+      "cache-control":"no-cachea",
+      "Postman-Token":"25b4170c-5387-4f4c-a30d-52a87a4decea",
+      "User-Agent":"PostmanRuntime/7.6.1",
+      "Accept":"/",
+      "Host":"localhost:3000",
+      "cookie":"connect.sid=s%3ADEYcP-yZve796Jg2tyMI6urhcyFtZNqP.mjwk6MIXR9r8VyOPZD1FUVT5p6n%2BOka9SYLuaSfiuTo; csrftoken=GbEGmsZKvAkaikpx2EWNOc21ONrZHSLVsHsZfEIHOMoZXGNk4S8QANhp4mTjs1wV",
+      "accept-encoding":"gzip, deflate",
+      "content-length":"423",
+      "Connection":"keep-alive",
+      "Content-Length":423
+   },
+   "path":"/",
+   "requestContext":{
+      "accountId":"offlineContext_accountId",
+      "resourceId":"offlineContext_resourceId",
+      "apiId":"offlineContext_apiId",
+      "stage":"dev",
+      "requestId":"offlineContext_requestId_",
+      "identity":{
+         "cognitoIdentityPoolId":"offlineContext_cognitoIdentityPoolId",
+         "accountId":"offlineContext_accountId",
+         "cognitoIdentityId":"offlineContext_cognitoIdentityId",
+         "caller":"offlineContext_caller",
+         "apiKey":"offlineContext_apiKey",
+         "sourceIp":"127.0.0.1",
+         "cognitoAuthenticationType":"offlineContext_cognitoAuthenticationType",
+         "cognitoAuthenticationProvider":"offlineContext_cognitoAuthenticationProvider",
+         "userArn":"offlineContext_userArn",
+         "userAgent":"PostmanRuntime/7.6.1",
+         "user":"offlineContext_user"
+      },
+      "authorizer":{
+         "principalId":"offlineContext_authorizer_principalId"
+      },
+      "resourcePath":"/",
+      "httpMethod":"POST"
+   },
+   "resource":"/",
+   "httpMethod":"POST",
+   "body":{
+      "data":{
+         "zip":73301
+      },
+      "ip":"38.140.212.234",
+      "local_hour":15,
+      "phone_num_lease_time":600,
+      "placement_id":null,
+      "sub_1":1,
+      "ua":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36 OPR/38.0.2220.41",
+      "url":"thezebra.com",
+      "version":17
+   }
+}
