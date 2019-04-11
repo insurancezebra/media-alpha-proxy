@@ -1,26 +1,27 @@
 import json
-import requests
 import logging
 
-MEDIA_ALPHA_URL = 'http://insurance-test.mediaalpha.com/ivr.json'
+import requests
+
+from settings import MEDIA_ALPHA_URL, PAYLOAD_SECRETS
 log = logging.getLogger(__name__)
 
 
-def validate_input(payload):
+def affix_secrets(payload):
     """
-    Validate payload
-    :param payload: A dict
-    :return: The body of the payload
+    Affixes secrets to payload
+    :param payload: Incoming data
+    :return: Data with
     """
     try:
-        body = payload['body']
-    except KeyError:
-        log.warning(' Key \'body\' not found. Continuing...')
-        body = payload
-    else:
-        body = json.loads(body)
+        payload = json.loads(payload)
+    except TypeError as e:
+        log.info(f'{e}\nBody parameter is of type \'dict\'\nContinuing...')
+    finally:
+        payload['api_token'] = PAYLOAD_SECRETS['API_TOKEN']
+        payload['placement_id'] = payload.get('placement_id') or PAYLOAD_SECRETS['PLACEMENT_ID']
 
-    return body
+    return payload
 
 
 def get_phone_number(event, context):
@@ -30,12 +31,16 @@ def get_phone_number(event, context):
     :param context:
     :return: Object containing phone number
     """
-    body = validate_input(event)
+    payload = event.get('body', event)
 
-    r = requests.post(MEDIA_ALPHA_URL, json=body)
+    # Append secrets to payload
+    data = affix_secrets(payload)
+
+    r = requests.post(MEDIA_ALPHA_URL, json=data)
     response = {
-        "statusCode": r.status_code,
-        "body": r.json(),
+        'statusCode': r.status_code,
+        'headers': {'Content-Type': 'application/json'},
+        'body': r.text,
     }
 
     return response
