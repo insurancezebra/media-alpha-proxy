@@ -1,6 +1,10 @@
-MEDIA_ALPHA_URL = 'http://insurance-test.mediaalpha.com/ivr.json'
+import os
 
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
+MEDIA_ALPHA_URL = os.getenv("MEDIA_ALPHA_URL")
 PAYLOAD_SECRETS = {
-    "API_TOKEN": "tKB5iqtmDYhs8oiypEhpHM",
-    "PLACEMENT_ID": "d3kf4O0g8BTUCMfvPbFBQMGwbN0LqA"
+    "API_TOKEN": os.getenv("API_TOKEN"),
+    "PLACEMENT_ID": os.getenv("PLACEMENT_ID")
 }

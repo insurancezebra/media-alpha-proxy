@@ -4,6 +4,7 @@ import logging
 import requests
 
 from settings import MEDIA_ALPHA_URL, PAYLOAD_SECRETS
+
 log = logging.getLogger(__name__)
 
 
