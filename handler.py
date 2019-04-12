@@ -40,7 +40,6 @@ def get_phone_number(event, context):
     r = requests.post(MEDIA_ALPHA_URL, json=data)
     response = {
         'statusCode': r.status_code,
-        'headers': {'Content-Type': 'application/json'},
         'body': r.text,
     }
 
