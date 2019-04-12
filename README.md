@@ -2,6 +2,12 @@
 
 A service for proxying data with FrontEnd
 
+#### ToDo
+Script to:
+- Create and activate virtualenv, using python 3.6
+- Install packages in requirements.txt
+- Run npm install (install serverless -g, serverless python requirements and serverless offline python)
+
 #### Running
 To run serverless locally...
 
@@ -21,6 +27,13 @@ It can be tested using Postman
 
 * Note: `serverless` can be replaced with `sls`.
 
+
+#### Deploy
+To deploy, where `dev` can be substituted for the proper environment, run..
+```bash
+ENVIRONMENT=dev ./deploy.sh
+```
+where 
 
 #### Testing
 To run tests, simply run
