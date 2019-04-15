@@ -21,7 +21,7 @@ Using serverless offline:
 The following generates an endpoint, which `POST` requests can be sent to passing along a json object in the body
 ```bash
 npm install
-serverless offline start
+serverless offline
 ```
 It can be tested using Postman
 

@@ -3,8 +3,9 @@ import logging
 
 import requests
 
-from settings import MEDIA_ALPHA_URL, PAYLOAD_SECRETS
+from settings import PAYLOAD_SECRETS
 
+MEDIA_ALPHA_URL = "https://insurance-test.mediaalpha.com/ivr.json"
 log = logging.getLogger(__name__)
 
 

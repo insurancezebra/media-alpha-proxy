@@ -16,7 +16,6 @@ var/
 .installed.cfg
 *.egg
 
-.env
 .idea/
 __pycache__/
 venv/

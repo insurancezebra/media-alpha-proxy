@@ -3,8 +3,12 @@ service: media-alpha
 provider:
   name: aws
   runtime: python3.6
-  profile: MyZebraUser-staging
+  profile: ${opt:aws-profile, 'MyZebraUser-staging'}
   region: us-west-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    API_TOKEN: ${self:custom.stages.${self:provider.stage}.API_TOKEN}
+    PLACEMENT_ID: ${self:custom.stages.${self:provider.stage}.PLACEMENT_ID}
 
 functions:
   phone_number:
@@ -15,9 +19,16 @@ functions:
           method: POST
 
 plugins:
-  - serverless-offline-python
+  - serverless-offline
   - serverless-python-requirements
 
 custom:
   pythonRequirements:
     dockerizePip: non-linux
+  stages:
+    dev:
+      API_TOKEN: "tKB5iqtmDYhs8oiypEhpHM"
+      PLACEMENT_ID: "d3kf4O0g8BTUCMfvPbFBQMGwbN0LqA"
+    prod:
+      API_TOKEN: "tKB5iqtmDYhs8oiypEhpHM"
+      PLACEMENT_ID: "d3kf4O0g8BTUCMfvPbFBQMGwbN0LqA"
