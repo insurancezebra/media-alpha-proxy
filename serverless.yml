@@ -23,6 +23,14 @@ plugins:
   - serverless-offline
   - serverless-python-requirements
 
+package:
+  individually: true
+  exclude:
+    - .virtualenv/**
+    - .venv/**
+    - node_modules/**
+    - venv/**
+
 custom:
   pythonRequirements:
     dockerizePip: non-linux
