@@ -6,6 +6,7 @@
     "serverless-python-requirements": "^4.3.0"
   },
   "devDependencies": {
+    "serverless-domain-manager": "^3.2.1",
     "serverless-offline": "^4.9.4"
   },
   "scripts": {

@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: python3.6
   profile: ${opt:aws-profile, 'MyZebraUser-staging'}
-  region: us-west-1
+  region: us-east-1
   stage: ${opt:stage, 'dev'}
   environment:
     API_TOKEN: ${self:custom.stages.${self:provider.stage}.API_TOKEN}
@@ -15,13 +15,14 @@ functions:
     handler: handler.get_phone_number
     events:
       - http:
-          path: ''
+          path: 'phone-number'
           method: POST
           cors: true
 
 plugins:
   - serverless-offline
   - serverless-python-requirements
+  - serverless-domain-manager
 
 package:
   individually: true
@@ -34,10 +35,16 @@ package:
 custom:
   pythonRequirements:
     dockerizePip: non-linux
+  customDomain:
+    domainName: 'api.onebox.thezebra.com'
+    basePath: 'mediaalpha-ivr'
+    stage: ${self:provider.stage}
+    createRoute53Record: true
   stages:
     dev:
-      API_TOKEN: "tKB5iqtmDYhs8oiypEhpHM"
-      PLACEMENT_ID: "d3kf4O0g8BTUCMfvPbFBQMGwbN0LqA"
+      API_TOKEN: 'tKB5iqtmDYhs8oiypEhpHM'
+      PLACEMENT_ID: 'd3kf4O0g8BTUCMfvPbFBQMGwbN0LqA'
+      SLS_DEBUG: '*'
     prod:
-      API_TOKEN: "tKB5iqtmDYhs8oiypEhpHM"
-      PLACEMENT_ID: "d3kf4O0g8BTUCMfvPbFBQMGwbN0LqA"
+      API_TOKEN: 'tKB5iqtmDYhs8oiypEhpHM'
+      PLACEMENT_ID: 'd3kf4O0g8BTUCMfvPbFBQMGwbN0LqA'
