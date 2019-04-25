@@ -35,6 +35,7 @@ package:
 custom:
   pythonRequirements:
     dockerizePip: non-linux
+    pythonBin: /opt/python3.6/bin/python
   customDomain:
     domainName: 'api.onebox.thezebra.com'
     basePath: 'mediaalpha-ivr'
