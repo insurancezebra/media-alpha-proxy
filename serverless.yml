@@ -3,7 +3,6 @@ service: media-alpha
 provider:
   name: aws
   runtime: python3.6
-  profile: ${opt:aws-profile, 'MyZebraUser-staging'}
   region: us-east-1
   stage: ${opt:stage, 'dev'}
   environment:
