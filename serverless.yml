@@ -17,6 +17,13 @@ functions:
           path: 'phone-number'
           method: POST
           cors: true
+  versioning:
+    handler: healthcheck.check_version
+    events:
+      - http:
+          path: 'version'
+          method: GET
+          cors: true
 
 plugins:
   - serverless-offline
