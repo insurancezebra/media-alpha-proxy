@@ -4,6 +4,7 @@
   "main": "index.js",
   "dependencies": {
     "serverless": "^1.41.1",
+    "serverless-plugin-git-variables": "^3.3.1",
     "serverless-python-requirements": "^4.3.0"
   },
   "devDependencies": {

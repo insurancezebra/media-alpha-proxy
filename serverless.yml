@@ -8,6 +8,9 @@ provider:
   environment:
     API_TOKEN: ${self:custom.stages.${self:provider.stage}.API_TOKEN}
     PLACEMENT_ID: ${self:custom.stages.${self:provider.stage}.PLACEMENT_ID}
+    CI_REPO_NAME: ${git:repository}
+    CI_COMMIT_ID: ${git:commit}
+    CI_BRANCH: ${git:branch}
 
 functions:
   phone_number:
@@ -29,6 +32,7 @@ plugins:
   - serverless-offline
   - serverless-python-requirements
   - serverless-domain-manager
+  - serverless-plugin-git-variables
 
 package:
   individually: true
@@ -54,3 +58,4 @@ custom:
     prod:
       API_TOKEN: 'tKB5iqtmDYhs8oiypEhpHM'
       PLACEMENT_ID: 'd3kf4O0g8BTUCMfvPbFBQMGwbN0LqA'
+  exportGitVariables: false
