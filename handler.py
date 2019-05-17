@@ -3,9 +3,8 @@ import logging
 
 import requests
 
-from settings import PAYLOAD_SECRETS
+from settings import PAYLOAD_SECRETS, MEDIA_ALPHA_URL
 
-MEDIA_ALPHA_URL = "https://insurance-test.mediaalpha.com/ivr.json"
 log = logging.getLogger(__name__)
 
 
@@ -37,6 +36,8 @@ def get_phone_number(event, context):
 
     # Append secrets to payload
     data = affix_secrets(payload)
+    print('media alpha', MEDIA_ALPHA_URL)
+    print('payload secrets', PAYLOAD_SECRETS)
 
     r = requests.post(MEDIA_ALPHA_URL, json=data)
     response = {
